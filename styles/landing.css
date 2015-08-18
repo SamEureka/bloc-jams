@@ -1,0 +1,63 @@
+body.landing {
+    background-color: rgb(58,23,63); /* background color to an RGB value */
+}
+
+
+.navbar {
+    padding: 0.5rem; /* add some pad */
+    background-color: rgb(101,18,95); /* for rgb'ing */
+}
+
+.navbar .logo {
+    position: relative; /* because position */
+    left: 2rem; /* left style, Yo! */
+}
+
+.hero-content { /* styles the hero section */
+    position: relative;
+    min-height: 600px;
+    background-image: url(../assets/images/bloc_jams_bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.hero-content .hero-title { /* move the title to the center and make it big */
+    position: absolute;
+    top: 40%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+    font-size: 4rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    text-shadow: 1px1px 0px rgb(58,23,63);
+}
+
+.selling-points {
+    position: relative;
+    display: table;
+    width: 100%;
+}
+
+.point { /* table-cell! very cool!! */
+    display: table-cell;
+    position: relative;
+    width: 33.3%;
+    padding: 2rem;
+    text-align: center;
+}
+
+.point .point-title {
+    font-size: 1.25rem;
+}
+
+.ion-music-note,
+.ion-radio-waves,
+.ion-iphone { /* icon size and color */
+    color: rgb(233,50,117);
+    font-size: 5rem;
+}
