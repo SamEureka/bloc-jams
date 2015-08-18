@@ -1,0 +1,24 @@
+html {
+    height: 100%; /* HTML takes up 100% of the browser window */
+}
+
+body {
+    font-family: 'Open Sans'; /* sets font to the "Open Sans" typeface */
+    color: white; /* sets the text color to white */
+    min-height: 100%; /* height of the body must be, at minimum, 100% of the window */
+}
+
+body.landing {
+    background-color: rgb(58,23,63); /* background color to an RGB value */
+}
+
+
+.navbar {
+    padding: 0.5rem; /* add some pad */
+    background-color: rgb(101,18,95); /* for rgb'ing */
+}
+
+.navbar .logo {
+    position: relative; /* because position */
+    left: 2rem; /* left style, Yo! */
+}
