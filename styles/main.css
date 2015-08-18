@@ -56,7 +56,7 @@ body.landing {
     box-sizing: border-box;
 }
 
-.point {
+.point { /* table-cell! very cool!! */
     display: table-cell;
     position: relative;
     width: 33.3%;
@@ -70,7 +70,7 @@ body.landing {
 
 .ion-music-note,
 .ion-radio-waves,
-.ion-iphone {
+.ion-iphone { /* icon size and color */
     color: rgb(233,50,117);
     font-size: 5rem;
 }
