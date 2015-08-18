@@ -39,14 +39,10 @@ body.landing {
 
 .selling-points {
     position: relative;
-    display: table;
-    width: 100%;
 }
 
-.point { /* table-cell! very cool!! */
-    display: table-cell;
+.point { 
     position: relative;
-    width: 33.3%;
     padding: 2rem;
     text-align: center;
 }

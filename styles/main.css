@@ -4,6 +4,21 @@
     box-sizing: border-box;
 }
 
+@media (min-width: 40rem){
+    html { font-size: 112%; }
+    
+    .column {
+        float: left;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+}
+
+@media (min-width: 64rem) {
+    html { font-size: 120%; }
+}
+    
 html {
     height: 100%; /* HTML takes up 100% of the browser window */
 }
@@ -12,4 +27,9 @@ body {
     font-family: 'Open Sans'; /* sets font to the "Open Sans" typeface */
     color: white; /* sets the text color to white */
     min-height: 100%; /* height of the body must be, at minimum, 100% of the window */
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 64rem;
 }
