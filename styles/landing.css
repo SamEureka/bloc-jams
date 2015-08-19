@@ -2,17 +2,6 @@ body.landing {
     background-color: rgb(58,23,63); /* background color to an RGB value */
 }
 
-
-.navbar {
-    padding: 0.5rem; /* add some pad */
-    background-color: rgb(101,18,95); /* for rgb'ing */
-}
-
-.navbar .logo {
-    position: relative; /* because position */
-    left: 2rem; /* left style, Yo! */
-}
-
 .hero-content { /* styles the hero section */
     position: relative;
     min-height: 600px;
