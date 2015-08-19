@@ -92,3 +92,7 @@ body {
 .links-container .navbar-link:hover {
     color: rgb(233,50,117);
 }
+
+.container.narrow {
+    max-width: 56rem;
+}
