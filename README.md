@@ -1,6 +1,6 @@
 # bloc-jams
 ### bloc.io Frontend Development Course
-Foundation Project - [Bloc Jams](http://sam.dennon.me/bloc-jams/)
+Foundation Project - [Bloc Jams](http://bloc-jams.sameureka.com)
 
 JSBins:
   - [Assignment 10](https://jsbin.com/xuquca/edit?output)
