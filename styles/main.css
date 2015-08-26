@@ -85,6 +85,7 @@ body {
     font-size: 0.625rem;
     letter-spacing: 0.05rem;
     font-weight: 700;
+    text-transform: uppercase;
     text-decoration: none;
     cursor: pointer;
 }
