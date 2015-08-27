@@ -1,9 +1,10 @@
-var animatePoints = function () {
-    "use strict";
-    var points = document.getElementsByClassName('point');
+var pointsArray = document.getElementsByClassName('point');
+
+var animatePoints = function (points) {
+    
 
     var revealPoint = function () {
-        for (var i = 0; i < points.length; i++) {
+        for (var i in points) {
             points[i].style.opacity = 1;
             points[i].style.transform = "rotate(7deg) scaleX(1) translateY(0)";
             points[i].style.msTransform = "rotate(7deg) scaleX(1) translateY(0)";
@@ -11,7 +12,20 @@ var animatePoints = function () {
         }
     };
 
-
     revealPoint();
 };
-animatePoints();
+window.onload = function() {
+    
+    // had to change height from 950 to 850 //Sam
+    if (window.innerHeight > 850) {
+    animatePoints(pointsArray);
+    }
+    
+window.addEventListener('scroll', function(event) {
+
+    if (pointsArray[0].getBoundingClientRect().top <= 400){
+        animatePoints(pointsArray);
+    }
+    
+});
+}
