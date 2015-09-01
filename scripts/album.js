@@ -58,11 +58,63 @@ var albumMarconi = {
     ]
 };
 
+var albumClash = {
+    name: 'London Calling',
+    artist: 'The Clash',
+    lable: 'CBS',
+    year: '1979',
+    albumArtUrl: 'assets/images/album_covers/TheClashLondonCallingalbumcover.jpg',
+    songs: [
+        {
+            name: 'London Calling',
+            length: '3:19'
+        },
+        {
+            name: 'Brand New Cadillac',
+            length: '2:09'
+        },
+        {
+            name: 'Jimmy Jazz',
+            length: '3:52'
+        },
+        {
+            name: 'Hateful',
+            length: '2:45'
+        },
+        {
+            name: 'Rudie Can\'t Fail',
+            length: '3:26'
+        },
+        {
+            name: 'Spanish Bombs',
+            length: '3:19'
+        },
+        {
+            name: 'The Right Profile',
+            length: '3:56'
+        },
+        {
+            name: 'Lost in the Supermarket',
+            length: '3:47'
+        },
+        {
+            name: 'Clampdown',
+            length: '3:49'
+        },
+        {
+            name: 'The Guns of Brixton',
+            length: '3:07'
+        },
+    ]
+};
+
 var createSongRow = function (songNumber, songName, songLength) {
     var template =
         '<tr class="album-view-song-item">' + '<td class="song-item-number">' + songNumber + '</td>' + '<td class="song-item-title">' + songName + '</td>' + '<td class="song-item-duration">' + songLength + '</td>' + '</tr>';
     return template;
 };
+
+var currentAlbum = '';
 
 var setCurrentAlbum = function (album) {
     var albumTitle = document.getElementsByClassName('album-view-title')[0];
@@ -70,6 +122,7 @@ var setCurrentAlbum = function (album) {
     var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
     var albumImage = document.getElementsByClassName('album-cover-art')[0];
     var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+    currentAlbum = album.name;
 
     albumTitle.firstChild.nodeValue = album.name;
     albumArtist.firstChild.nodeValue = album.artist;
@@ -83,6 +136,20 @@ var setCurrentAlbum = function (album) {
     }
 };
 
+var albumToggle = function () {
+    if (currentAlbum == albumPicasso.name) {
+        setCurrentAlbum(albumMarconi);
+    } else if (currentAlbum == albumMarconi.name) {
+        setCurrentAlbum(albumClash);
+    } else {
+        setCurrentAlbum(albumPicasso);
+    }
+};
+
 window.onload = function () {
     setCurrentAlbum(albumPicasso);
+
+document.getElementsByClassName('album-cover-art')[0].addEventListener('click', albumToggle);
 };
+
+//$(window).on('click', '.toggle', function () {});
