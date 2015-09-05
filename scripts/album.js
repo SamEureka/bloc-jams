@@ -85,7 +85,16 @@ var setCurrentAlbum = function (album) {
         albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].name, album.songs[i].length);
     }
 };
-// Comment about listeners
+
+//Find parent function based on http://goo.gl/NrUzSs 
+
+var findParentByClassName = function(element, searchClass){
+    console.log('findParentByClassName', element);
+    while((element = element.parentElement) && element.classList.contains(searchClass)){return element;}
+};
+//
+
+// song list stuff
 var songListContainer = document.getElementsByClassName('album-view-song-list')[0];
 var songRows = document.getElementsByClassName('album-view-song-item');
 
@@ -94,6 +103,9 @@ var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></
 
 window.onload = function () {
         setCurrentAlbum(albumPicasso);
+    
+        // this wasnt working until we moved it down here
+    console.log(findParentByClassName(document.getElementsByClassName('song-item-duration')[0], 'album-view-song-item'));
 
         songListContainer.addEventListener('mouseover', function (event) {
             if (event.target.parentElement.className === 'album-view-song-item') {
