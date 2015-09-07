@@ -99,6 +99,12 @@ var findParentByClassName = function(element, targetClass) {
     while (currentParent.className != targetClass) {
         currentParent = currentParent.parentElement
     }
+    // adding in parent check for assignmnet 27
+    if (typeof(element.parentElement) == 'undefined') {
+        alert("No parent found");
+    }else if (element.parentElement === targetClass) {
+        alert("No parent found with that class name");
+    }
     return currentParent;
 };
 
