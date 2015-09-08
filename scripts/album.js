@@ -56,7 +56,7 @@ var albumMarconi = {
             length: '2:15'
         }
     ]
-};
+}; 
 
 var createSongRow = function (songNumber, songName, songLength) {
     var template =
@@ -64,25 +64,26 @@ var createSongRow = function (songNumber, songName, songLength) {
     + '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
 
     + '<td class="song-item-title">' + songName + '</td>' + '<td class="song-item-duration">' + songLength + '</td>' + '</tr>';
-    return template;
+    return $(template);
 };
 
 var setCurrentAlbum = function (album) {
-    var albumTitle = document.getElementsByClassName('album-view-title')[0];
-    var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-    var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-    var albumImage = document.getElementsByClassName('album-cover-art')[0];
-    var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+    var $albumTitle = $('.album-view-title');
+    var $albumArtist = $('.album-view-artist');
+    var $albumReleaseInfo = $('.album-view-release-info');
+    var $albumImage = $('.album-cover-art');
+    var $albumSongList = $('.album-view-song-list');
 
-    albumTitle.firstChild.nodeValue = album.name;
-    albumArtist.firstChild.nodeValue = album.artist;
-    albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.lable;
-    albumImage.setAttribute('src', album.albumArtUrl);
+    $albumTitle.text(album.name);
+    $albumArtist.text(album.artist);
+    $albumReleaseInfo.text(album.year + ' ' + album.lable);
+   $albumImage.attr('src', album.albumArtUrl);
 
-    albumSongList.innerHTML = '';
+    $albumSongList.empty();
 
-    for (var i = 0; i < album.songs.length; i++) {
-        albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].name, album.songs[i].length);
+    for (i = 0; i < album.songs.length; i++) {
+        var $newRow = createSongRow(i + 1, album.songs[i].name, album.songs[i].length);
+        $albumSongList.append($newRow);
     }
 };
 
@@ -92,6 +93,8 @@ var findParentByClassName = function(element, searchClass){
     console.log('findParentByClassName', element);
     while((element = element.parentElement) && element.classList.contains(searchClass)){return element;}
 };*/
+
+
  
 // bloc's solution for find parent
 var findParentByClassName = function(element, targetClass) {
