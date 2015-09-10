@@ -49,6 +49,7 @@ body.album {
 
 .song-item-number {
     width: 5%;
+    text-align: center;
 }
 
 .song-item-title {
