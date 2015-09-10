@@ -95,17 +95,9 @@ var trackIndex = function(album, song) {
 
 var nextSong = function() {
 
-    // Know what the previous song is. This includes the situation in 
-    // which the next song is the first song, following the final song 
-    // in the album (that is, it should "wrap" around).
-    // var getLastSongNumber = function(index) {
-    //     if (index == 0){
-    //         return currentAlbum.songs.length;
-    //     } else {
-    //         return index;
-    //     }
-    // };
-
+    var getLastSongNumber = function(index) {
+        return index == 0 ? currentAlbum.songs.length : index;
+    };
 
     // Use the trackIndex() helper function to get the index of the 
     // current song and then increment the value of the index.
@@ -136,16 +128,44 @@ var nextSong = function() {
 };
 
 var previousSong = function() {
-    var currentSongIndex = trackIndex(currentAlbum, currentSongFromAlbum)
+    var getLastSongNumber = function(index){
+        if (index == (currentAlbum.songs.length - 1)){ 
+            return 1;
+            } else { 
+            return index + 2;
+        }
+    };
+
+    var currentSongIndex = trackIndex(currentAlbum, currentSongFromAlbum);
+    currentSongIndex--;
+
+    if (currentSongIndex < 0){
+        currentSongIndex = currentAlbum.songs.length -1;
+    }
+    
+    // Same as nextSong function cutNpaste
+    // Set a new current song to currentSongFromAlbum.
+    currentlyPlayingSongNumber = currentSongIndex + 1;
+    currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
+
+    // Update the player bar to show the new song.
+    updatePlayerBarSong();
+
+    // Update the HTML of the previous song's .song-item-number element with a number.
+    var prevSongNumber = getLastSongNumber(currentSongIndex);
+    $nextSongNumberCell = getSongNumberCell(currentlyPlayingSongNumber);
+    $prevSongNumberCell = getSongNumberCell(prevSongNumber);
+
+    $prevSongNumberCell.html(prevSongNumber);
+
+    // Update the HTML of the new song's .song-item-number element with a pause button.
+    $nextSongNumberCell.html(pauseButtonTemplate);
+
 
 };
 
 var getLastSongNumber = function(index) {
-    if (index == 0){
-        return currentAlbum.songs.length;
-    } else {
-        return index;
-    }
+    return index == 0 ? currentAlbum.songs.length : index;
 };
 
 
