@@ -181,7 +181,7 @@ var previousSong = function() {
 // Set Song function
 var setSong = function(songNumber) {
     if (currentSoundFile){
-        currentSoundFile.stop;
+        currentSoundFile.stop();
     }
         currentlyPlayingSongNumber = parseInt(songNumber);
         currentSongFromAlbum = currentAlbum.songs[songNumber -1];
