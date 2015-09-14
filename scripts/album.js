@@ -201,17 +201,20 @@ var setVolume = function(volume) {
 };
 
 var togglePlayFromPlayerBar = function() {
-    if (currentSoundFile.isPaused != true) { 
+    
+    (currentSoundFile.isPaused() === true) ? togglePlay() : togglePause();
+
+
+    function togglePause() { 
         currentSoundFile.pause();
         currentlyPlayingCell.html(playButtonTemplate);
         $playerBarToggleButton.html(playerBarPlayButton);
-    } 
-    else {
-
+    }; 
+    function togglePlay() {
        currentlyPlayingCell.html(pauseButtonTemplate);
        $playerBarToggleButton.html(playerBarPauseButton);
        currentSoundFile.play(); 
-    }
+    };
 };
 
 // It was easier just to write this function now.
