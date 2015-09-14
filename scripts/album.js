@@ -225,14 +225,14 @@ var setupSeekBars = function() {
         var seekBarFillRatio = offsetX / barWidth;
         updateSeekPercentage($(this), seekBarFillRatio);
     });
-    $seekBars.find('.thumb').mouusedown(function(event){
+    $seekBars.find('.thumb').mousedown(function(event){
         var $seekbar = $(this).parent();
         $(document).bind('mousemove.thumb', function(event){
             var offsetX = event.pageX - $seekBar.offset().left;
             var barWidth = $seekBar.width();
             var seekBarFillRatio = offsetX /barWidth;
         });
-        $(document).bind)('mouseup.thumb', function(){
+        $(document).bind('mouseup.thumb', function(){
             $(document).unbind('mousemove.thumb');
             $(document).unbind('mouseup.thumb');
         });
