@@ -108,7 +108,7 @@
 
 .seek-bar .fill {
 	background: white;
-	width: 36%;
+	width: 0%;
 	height: 0.25rem;
 	border-radius: 2px;
 }
@@ -118,14 +118,23 @@
 	height: 0.5rem;
 	width: 0.5rem;
 	background: white;
-	left: 50%;
+	left: 0%;
 	top: 50%;
 	margin-left: -0.25rem;
 	margin-top: -0.25rem;
 	border-radius: 50%;
-	-webkit-transition: all 100ms ease-in-out;
-	-moz-transition: all 100ms ease-in-out;
-	transition: all 100ms ease-in-out;
+	-webkit-transition: width 100ms ease-in-out;
+	-moz-transition: width 100ms ease-in-out;
+	transition: width 100ms ease-in-out;
+	-webkit-transition: height 100ms ease-in-out;
+	-moz-transition: height 100ms ease-in-out;
+	transition: height 100ms ease-in-out;
+	-webkit-transition: margin-top 100ms ease-in-out;
+	-moz-transition: margin-top 100ms ease-in-out;
+	transition: margin-top 100ms ease-in-out;
+	-webkit-transition: margin-left 100ms ease-in-out;
+	-moz-transition: margin-left 100ms ease-in-out;
+	transition: margin-left 100ms ease-in-out;
 }
 
 .seek-bar:hover .thumb {
