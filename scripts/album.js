@@ -109,6 +109,7 @@ var updatePlayerBarSong = function() {
     $('.currently-playing .artist-name').text(currentAlbum.artist);
     $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.name + ' - ' + currentAlbum.artist);
     $('.left-controls .play-pause').html(playerBarPauseButton);
+    setTotalTimeInPlayerBar(currentSoundFile.getDuration());
 };
 
 var trackIndex = function(album, song) {
@@ -297,6 +298,26 @@ var setupSeekBars = function() {
     });
 };
 
+// sets the time bar running time in the player bar
+var setCurrentTimeInPlayerBar = function(currentTime) {
+    
+    $('.current-time').text(currentTime); 
+};
+
+// sets the total play time in the player bar
+var setTotalTimeInPlayerBar = function(totalTime) {
+    $('.total-time').text(totalTime);
+};
+
+// converts time variables to number with 2 decimal places, formatted X:XX
+var filterTimeCode = function(timeInSeconds) {
+    timeInSeconds = parseFloat(timeInSeconds);
+    // more goes here... Math.floor stuff
+    var $runningTimeMinutes = Math.floor(timeInSeconds);
+    var $runningTimeSeconds = Math.floor(timeInSeconds);
+    return $runningTimeMinutes + ':' + $runningTimeSeconds;
+};
+
 // song list stuff
 var songListContainer = document.getElementsByClassName('album-view-song-list')[0];
 var songRows = document.getElementsByClassName('album-view-song-item');
@@ -314,6 +335,7 @@ var currentAlbum = null;
 var currentSongFromAlbum = null;
 var currentSoundFile = null;
 var currentVolume = 80;
+var currentTime = 0;
 
 // player bar selectors
 var $previousButton = $('.left-controls .previous');
