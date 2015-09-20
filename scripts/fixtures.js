@@ -5,11 +5,11 @@ var albumPicasso = {
 	year: '1881',
 	albumArtUrl: '/assets/images/album_covers/01.png',
 	songs: [
-		{name: 'Blue', length: '4:26', audioUrl: '/assets/music/blue'},
-		{name: 'Green', length: '3:14', audioUrl: '/assets/music/green'},
-		{name: 'Red', length: '5:01', audioUrl: '/assets/music/red'},
-		{name: 'Pink', length: '3:21', audioUrl: '/assets/music/pink'},
-		{name: 'Magenta', length: '2:15', audioUrl: '/assets/music/magenta'}		
+		{name: 'Blue', length: 161.68, audioUrl: '/assets/music/blue'},
+		{name: 'Green', length: 103.93, audioUrl: '/assets/music/green'},
+		{name: 'Red', length: 268.42, audioUrl: '/assets/music/red'},
+		{name: 'Pink', length: 153.11, audioUrl: '/assets/music/pink'},
+		{name: 'Magenta', length: 374.18, audioUrl: '/assets/music/magenta'}		
 	]
 };
 
@@ -22,23 +22,23 @@ var albumMarconi = {
     songs: [
         {
             name: 'Hello, Operator?',
-            length: '1:01'
+            length: 61
         },
         {
             name: 'Ring, ring, ring',
-            length: '5:01'
+            length: 301
         },
         {
             name: 'Fits in your pocket',
-            length: '3:21'
+            length: 201
         },
         {
             name: 'Can you hear me now?',
-            length: '3.14'
+            length: 194
         },
         {
             name: 'Wrong phone number',
-            length: '2:15'
+            length: 135
         }
     ]
 };
@@ -52,43 +52,13 @@ var albumClash = {
     songs: [
         {
             name: 'London Calling',
-            length: '3:19'
-        },
-        {
-            name: 'Brand New Cadillac',
-            length: '2:09'
-        },
-        {
-            name: 'Jimmy Jazz',
-            length: '3:52'
-        },
-        {
-            name: 'Hateful',
-            length: '2:45'
-        },
-        {
-            name: 'Rudie Can\'t Fail',
-            length: '3:26'
+            length: 199.92,
+            audioUrl: '/assets/music/london_calling'
         },
         {
             name: 'Spanish Bombs',
-            length: '3:19'
-        },
-        {
-            name: 'The Right Profile',
-            length: '3:56'
-        },
-        {
-            name: 'Lost in the Supermarket',
-            length: '3:47'
-        },
-        {
-            name: 'Clampdown',
-            length: '3:49'
-        },
-        {
-            name: 'The Guns of Brixton',
-            length: '3:07'
-        },
+            length: 198,
+            audioUrl: '/assets/music/spanish_bombs'
+        }
     ]
 };

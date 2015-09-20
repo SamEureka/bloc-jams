@@ -3,7 +3,7 @@ var createSongRow = function(songNumber, songName, songLength) {
     var template =
         '<tr class="album-view-song-item">' + '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
 
-    +'<td class="song-item-title">' + songName + '</td>' + '<td class="song-item-duration">' + songLength + '</td>' + '</tr>';
+    +'<td class="song-item-title">' + songName + '</td>' + '<td class="song-item-duration">' + filterTimeCode(songLength) + '</td>' + '</tr>';
     
     // makes a row variable for jQuery to use
     var $row = $(template);
@@ -104,13 +104,13 @@ var setCurrentAlbum = function(album) {
 
 };
 
-var updatePlayerBarSong = function() {
-    $('.currently-playing .song-name').text(currentSongFromAlbum.name);
-    $('.currently-playing .artist-name').text(currentAlbum.artist);
-    $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.name + ' - ' + currentAlbum.artist);
-    $('.left-controls .play-pause').html(playerBarPauseButton);
-    setTotalTimeInPlayerBar(currentSoundFile.getDuration());
-};
+// var updatePlayerBarSong = function() {
+//     $('.currently-playing .song-name').text(currentSongFromAlbum.name);
+//     $('.currently-playing .artist-name').text(currentAlbum.artist);
+//     $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.name + ' - ' + currentAlbum.artist);
+//     $('.left-controls .play-pause').html(playerBarPauseButton);
+//     setTotalTimeInPlayerBar(currentSoundFile.getDuration());
+// };
 
 var trackIndex = function(album, song) {
     return album.songs.indexOf(song);
@@ -207,7 +207,8 @@ var setSong = function(songNumber) {
         currentSoundFile = new buzz.sound(currentSongFromAlbum.audioUrl, {
             formats: ['mp3'],
             preload: true
-        });
+        })
+        duration = currentSoundFile.getDuration();
         setVolume(currentVolume);
     };
 
@@ -237,8 +238,18 @@ var updateSeekBarWhileSongPlays = function(){
             var $seekBar = $('.seek-control .seek-bar');
 
             updateSeekPercentage($seekBar, seekBarFillRatio);
+            setCurrentTimeInPlayerBar(currentSoundFile.getTime());
+            duration = currentSoundFile.getDuration();
         });
     }
+};
+
+var updatePlayerBarSong = function() {
+    $('.currently-playing .song-name').text(currentSongFromAlbum.name);
+    $('.currently-playing .artist-name').text(currentAlbum.artist);
+    $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.name + ' - ' + currentAlbum.artist);
+    $('.left-controls .play-pause').html(playerBarPauseButton);
+    setTotalTimeInPlayerBar(currentSongFromAlbum.length);
 };
 
 // Seek bar code
@@ -282,10 +293,8 @@ var setupSeekBars = function() {
 
         if ($seekBar.parent().hasClass('seek-control')){
             seek(seekBarFillRatio * currentSoundFile.getDuration());
-            console.log('Thumb dot - change play head');
         } else {
             setVolume(seekBarFillRatio * 100);
-            console.log('Thumb dot - change volume');
         }
 
             updateSeekPercentage($seekBar, seekBarFillRatio);
@@ -300,22 +309,23 @@ var setupSeekBars = function() {
 
 // sets the time bar running time in the player bar
 var setCurrentTimeInPlayerBar = function(currentTime) {
-    
-    $('.current-time').text(currentTime); 
+    $('.current-time').text(filterTimeCode(currentTime)); 
 };
 
 // sets the total play time in the player bar
 var setTotalTimeInPlayerBar = function(totalTime) {
-    $('.total-time').text(totalTime);
+    $('.total-time').text(filterTimeCode(totalTime));
 };
 
 // converts time variables to number with 2 decimal places, formatted X:XX
 var filterTimeCode = function(timeInSeconds) {
-    timeInSeconds = parseFloat(timeInSeconds);
-    // more goes here... Math.floor stuff
-    var $runningTimeMinutes = Math.floor(timeInSeconds);
-    var $runningTimeSeconds = Math.floor(timeInSeconds);
-    return $runningTimeMinutes + ':' + $runningTimeSeconds;
+    var secNum = parseInt(timeInSeconds, 10);
+    var runningTimeHours = Math.floor(secNum /3600);
+    var runningTimeMinutes = Math.floor((secNum - (runningTimeHours * 3600)) / 60);
+    var runningTimeSeconds = secNum - (runningTimeHours * 3600) - (runningTimeMinutes * 60);
+    if (runningTimeSeconds < 10) {runningTimeSeconds = "0"+runningTimeSeconds;}
+    filteredTime = runningTimeMinutes+':'+runningTimeSeconds;
+    return filteredTime;
 };
 
 // song list stuff
@@ -335,7 +345,6 @@ var currentAlbum = null;
 var currentSongFromAlbum = null;
 var currentSoundFile = null;
 var currentVolume = 80;
-var currentTime = 0;
 
 // player bar selectors
 var $previousButton = $('.left-controls .previous');
